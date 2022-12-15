@@ -3,18 +3,17 @@ import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/system";
 
-import HtppInterceptor from "./modules/shared/hooks/useHtppInterceptor";
 import RootRouter from "./navigation/RootRouter";
 
 import theme from "./config/theme";
+import HttpRequestInterceptor from "./modules/shared/containers/HttpRequestInterceptor";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <HtppInterceptor>
-        <CssBaseline />
-        <RootRouter />
-      </HtppInterceptor>
+      <HttpRequestInterceptor />
+      <CssBaseline />
+      <RootRouter />
     </ThemeProvider>
   </React.StrictMode>
 );
