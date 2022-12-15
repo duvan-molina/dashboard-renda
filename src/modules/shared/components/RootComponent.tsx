@@ -1,4 +1,5 @@
-import * as React from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,18 +16,23 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Outlet } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 
-const pages = ["Crear publicación", "Editar Perfil"];
-const settings = ["Perfil", "Logout"];
+const pages = [
+  {
+    title: '"Crear publicación"',
+    to: "/create-entry",
+  },
+  {
+    title: "Perfil",
+    to: "/edit-profile",
+  },
+];
+const settings = ["Logout"];
 
 const RootComponent: React.FC = () => {
   const theme = useTheme();
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -97,9 +103,11 @@ const RootComponent: React.FC = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
+                  <Link to={page.to} key={page.title.replaceAll(/ /g, "")}>
+                    <MenuItem onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page.title}</Typography>
+                    </MenuItem>
+                  </Link>
                 ))}
               </Menu>
             </Box>
@@ -124,13 +132,14 @@ const RootComponent: React.FC = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
+                <Link to={page.to} key={page.title.replaceAll(/ /g, "")}>
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page.title}
+                  </Button>
+                </Link>
               ))}
             </Box>
 
