@@ -1,20 +1,33 @@
 import baseURL from ".";
+import { ApartamentType } from "../modules/shared/store/modules/dashboard/types";
+import { ApiResponse } from "./utils";
 
-export const getAllApartamentsService = async () => {
+export const getAllApartamentsService = async (): Promise<
+  ApiResponse<ApartamentType[]>
+> => {
   try {
-    const response = baseURL.get("/api/v1/dashboard/apartaments");
-
-    return { payload: response };
+    const { data } = await baseURL.get<ApartamentType[]>(
+      "/api/v1/dashboard/apartaments"
+    );
+    return { success: true, response: data };
   } catch (error) {
-    console.log(error);
+    return {
+      success: false,
+    };
   }
 };
 
-export const sigin = async (data: any) => {
+export const sigin = async (auth: {
+  email: string;
+  password: string;
+}): Promise<ApiResponse<{ success: boolean; token?: string }>> => {
   try {
-    const response = await baseURL.post("api/v1/seller-user/sigin", data);
-    return { success: true, payload: response };
+    const { data } = await baseURL.post<{ success: boolean; token?: string }>(
+      "api/v1/seller-user/sigin",
+      auth
+    );
+    return { success: true, response: data };
   } catch (error) {
-    console.log(error);
+    return { success: false };
   }
 };

@@ -13,12 +13,12 @@ const initialState: IAuthState = {
 
 const authReducer = createReducer(initialState, (builder) => {
   builder.addCase(thunks.sigin.fulfilled, (_, action) => {
-    if (action.payload.response.data.success) {
-      return action.payload.response.data;
+    if (action.payload.response) {
+      return action.payload.response;
     }
   });
 });
 
 export default authReducer;
 
-export type LoansState = ReturnType<typeof authReducer>;
+export type AuthState = ReturnType<typeof authReducer>;

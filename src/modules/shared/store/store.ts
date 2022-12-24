@@ -7,9 +7,11 @@ import {
   ThunkAction,
 } from "@reduxjs/toolkit";
 import * as auth from "../../shared/store/modules/auth/constants";
+import * as dashboard from "../../shared/store/modules/dashboard/constants";
 import { PersistConfig, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "./modules/auth/reducers/auth.reducer";
+import dashboardReducer from "./modules/dashboard/reducers/dashboard.reducer";
 
 const KEY_PERSIST_CONFIG = "root";
 
@@ -22,6 +24,7 @@ export const persistConfig: PersistConfig<any> = {
 
 export const reducer = combineReducers({
   [auth.NAME]: authReducer,
+  [dashboard.NAME]: dashboardReducer,
 });
 
 const rootReducer: Reducer = (state: RootState, action: AnyAction) => {

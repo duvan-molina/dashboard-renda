@@ -7,11 +7,15 @@ import EditProfileScreen from "../modules/profile/screens/EditProfile.screen";
 import PrivateRoute from "./PrivateRoute";
 import LoginScreen from "../modules/auth/screens/Login.screen";
 import Navbar from "../modules/shared/components/RootComponent";
+import { useAppSelector } from "../modules/shared/store/hooks";
+import { isLogginSelector } from "../modules/shared/store/modules/auth/selectors";
 
 const RootRouter: React.FC = () => {
+  const isLoggin = useAppSelector(isLogginSelector);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      {isLoggin && <Navbar />}
       <Routes>
         <Route index element={<LoginScreen />} />
         <Route element={<PrivateRoute />}>
