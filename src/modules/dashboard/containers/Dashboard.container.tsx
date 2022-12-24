@@ -2,9 +2,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CardComponent from "../components/Card.component";
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../shared/store/hooks";
-import { apartamentsSelector } from "../../shared/store/modules/dashboard/selectors";
-import { getAllApartaments } from "../../shared/store/modules/dashboard/actions/thunks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { apartamentsSelector } from "../../../store/modules/dashboard/selectors";
+import { getAllApartaments } from "../../../store/modules/dashboard/actions/thunks";
 
 const DashboardContainer: React.FC = () => {
   const apartaments = useAppSelector(apartamentsSelector);
@@ -22,12 +22,13 @@ const DashboardContainer: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={1}>
-        {apartaments.length > 0 && (
-          <Grid item xs={12} sm={6} lg={4}>
-            <CardComponent title="Hello world" description="hello" />
-          </Grid>
-        )}
+      <Grid container spacing={5} justifyContent="center">
+        {apartaments.length > 0 &&
+          apartaments.map((apartament) => (
+            <Grid item xs={12} sm={6} lg={3} key={apartament.id}>
+              <CardComponent {...apartament} />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );

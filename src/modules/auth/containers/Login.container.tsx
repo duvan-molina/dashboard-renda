@@ -2,9 +2,9 @@ import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Navigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../shared/store/hooks";
-import { sigin } from "../../shared/store/modules/auth/actions/thunks";
-import { isLogginSelector } from "../../shared/store/modules/auth/selectors";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { sigin } from "../../../store/modules/auth/actions/thunks";
+import { isLogginSelector } from "../../../store/modules/auth/selectors";
 
 type FormValues = {
   email: string;

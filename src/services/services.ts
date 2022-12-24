@@ -1,5 +1,5 @@
 import baseURL from ".";
-import { ApartamentType } from "../modules/shared/store/modules/dashboard/types";
+import { ApartamentType } from "../store/modules/dashboard/types";
 import { ApiResponse } from "./utils";
 
 export const getAllApartamentsService = async (): Promise<

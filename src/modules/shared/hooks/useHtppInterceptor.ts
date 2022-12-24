@@ -2,8 +2,8 @@ import React from "react";
 import { AxiosError, AxiosRequestConfig } from "axios";
 import useEventCallback from "./useEventCallback";
 import baseURL from "../../../services";
-import { useAppSelector } from "../store/hooks";
-import { authTokenSelector } from "../store/modules/auth/selectors";
+import { useAppSelector } from "../../../store/hooks";
+import { authTokenSelector } from "../../../store/modules/auth/selectors";
 
 function useHttpInterceptor() {
   const token = useAppSelector(authTokenSelector);

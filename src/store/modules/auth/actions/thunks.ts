@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { sigin as siginServices } from "../../../../../../services/services";
-import { ApiResponse } from "../../../../../../services/utils";
+import { sigin as siginServices } from "../../../../services/services";
+import { ApiResponse } from "../../../../services/utils";
 
 export const sigin = createAsyncThunk(
   "auth/sigin",

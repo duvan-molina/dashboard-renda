@@ -8,7 +8,7 @@ import HttpRequestInterceptor from "./modules/shared/containers/HttpRequestInter
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-import { store } from "./modules/shared/store/store";
+import { store } from "./store/store";
 
 const App = () => {
   const persistor = persistStore(store);

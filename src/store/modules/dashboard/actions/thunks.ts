@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllApartamentsService } from "../../../../../../services/services";
+import { getAllApartamentsService } from "../../../../services/services";
 
-import { ApiResponse } from "../../../../../../services/utils";
+import { ApiResponse } from "../../../../services/utils";
 import { ApartamentType } from "../types";
 
 export const getAllApartaments = createAsyncThunk(
