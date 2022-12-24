@@ -18,7 +18,7 @@ import { useTheme } from "@mui/material/styles";
 
 const pages = [
   {
-    title: '"Crear publicación"',
+    title: "Crear publicación",
     to: "/create-entry",
   },
   {
@@ -28,7 +28,7 @@ const pages = [
 ];
 const settings = ["Logout"];
 
-const RootComponent: React.FC = () => {
+const Navbar: React.FC = () => {
   const theme = useTheme();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -103,7 +103,11 @@ const RootComponent: React.FC = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <Link to={page.to} key={page.title.replaceAll(/ /g, "")}>
+                  <Link
+                    to={page.to}
+                    key={page.title.replaceAll(/ /g, "")}
+                    style={{ textDecoration: "none" }}
+                  >
                     <MenuItem onClick={handleCloseNavMenu}>
                       <Typography textAlign="center">{page.title}</Typography>
                     </MenuItem>
@@ -132,7 +136,11 @@ const RootComponent: React.FC = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Link to={page.to} key={page.title.replaceAll(/ /g, "")}>
+                <Link
+                  to={page.to}
+                  key={page.title.replaceAll(/ /g, "")}
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: "white", display: "block" }}
@@ -181,4 +189,4 @@ const RootComponent: React.FC = () => {
     </>
   );
 };
-export default RootComponent;
+export default Navbar;

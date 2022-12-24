@@ -1,34 +1,27 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import RootComponent from "../modules/shared/components/RootComponent";
 import DashboardScreen from "../modules/dashboard/screens/Dashboard.screen";
 import CreateApartamentScreen from "../modules/create-apartament/screens/CreateApartament.screen";
 import EditProfileScreen from "../modules/profile/screens/EditProfile.screen";
+import PrivateRoute from "./PrivateRoute";
+import LoginScreen from "../modules/auth/screens/Login.screen";
+import Navbar from "../modules/shared/components/RootComponent";
 
 const RootRouter: React.FC = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootComponent />,
-      children: [
-        {
-          path: "/",
-          element: <DashboardScreen />,
-        },
-        {
-          path: "/create-entry",
-          element: <CreateApartamentScreen />,
-        },
-        {
-          path: "/edit-profile",
-          element: <EditProfileScreen />,
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route index element={<LoginScreen />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/home" element={<DashboardScreen />} />
+          <Route path="/create-entry" element={<CreateApartamentScreen />} />
+          <Route path="/edit-profile" element={<EditProfileScreen />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default RootRouter;
