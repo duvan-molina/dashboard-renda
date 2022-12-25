@@ -22,7 +22,7 @@ const DashboardContainer: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={5} justifyContent="center">
+      <Grid container spacing={5}>
         {apartaments.length > 0 &&
           apartaments.map((apartament) => (
             <Grid item xs={12} sm={6} lg={3} key={apartament.id}>

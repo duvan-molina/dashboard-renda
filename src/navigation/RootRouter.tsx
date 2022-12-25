@@ -20,7 +20,10 @@ const RootRouter: React.FC = () => {
         <Route index element={<LoginScreen />} />
         <Route element={<PrivateRoute />}>
           <Route path="/home" element={<DashboardScreen />} />
-          <Route path="/create-entry" element={<CreateApartamentScreen />} />
+          <Route path="/create-entry" element={<CreateApartamentScreen />}>
+            <Route path=":apartamentId" element={<CreateApartamentScreen />} />
+            <Route path="" element={<CreateApartamentScreen />} />
+          </Route>
           <Route path="/edit-profile" element={<EditProfileScreen />} />
         </Route>
       </Routes>
